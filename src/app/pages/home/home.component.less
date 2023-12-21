@@ -1,0 +1,69 @@
+@import "../../../styles.less";
+
+@clr1: red;
+@clr2: blue;
+@clr3: green;
+@clr4: yellow;
+@clr5: magenta;
+@clr6: cyan;
+
+@gradiant-angle: 0deg;
+
+@gradiant: conic-gradient(
+  from @gradiant-angle,
+  @clr1,
+  @clr2,
+  @clr3,
+  @clr4,
+  @clr5,
+  @clr6
+);
+
+@radius: 0.5em;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+
+  .spinning-card {
+    margin: auto;
+    width: 40em;
+    //here in case the js doesn't work for some reason
+    background: @gradiant;
+    border-radius: @radius;
+
+    .act-bg {
+        border-radius: @radius;
+        background-color: @background-color;
+        padding: 2vw;
+        width: 80%;
+        margin: auto;
+      
+        * {
+            font-size: 2em;
+        }
+    }
+    
+    .empty-row {
+        height: 2em;
+        display: block;
+    }
+  }
+
+  button {
+    background-color: @foreground-color;
+    border-radius: @radius;
+    color: @background-color;
+
+    &:hover {
+        cursor: wait;
+        background-color: @secondary-color;
+    }
+
+    &.spin-btn {
+        padding: 0.5em;
+    }
+  }
+}
