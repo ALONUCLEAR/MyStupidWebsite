@@ -10,3 +10,26 @@
     </div>
     <span class="empty-row"></span>
 </div>
+<h2>
+  Press one of the icons if you dare
+</h2>
+<div class="social-list">
+  <div class="scroller">
+    <!--Duplicate the elements for the loop-->
+    <ng-container *ngFor="let round of [1, 2]">
+      <ng-container *ngFor="let element of socialList">
+        <a *ngIf="element.isInApp"
+          [class]="'element ' + (element.classes ?? '')"
+          [routerLink]="element.url">
+          <img [src]="element.src" />
+        </a>
+        <a *ngIf="!element.isInApp"
+        [class]="'element ' + (element.classes ?? '')"
+          [href]="element.url"
+          target="_blank">
+          <img [src]="element.src" />
+        </a>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

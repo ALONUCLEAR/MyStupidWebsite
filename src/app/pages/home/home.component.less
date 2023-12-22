@@ -35,20 +35,20 @@
     border-radius: @radius;
 
     .act-bg {
-        border-radius: @radius;
-        background-color: @background-color;
-        padding: 2vw;
-        width: 80%;
-        margin: auto;
-      
-        * {
-            font-size: 2em;
-        }
+      border-radius: @radius;
+      background-color: @background-color;
+      padding: 2vw;
+      width: 80%;
+      margin: auto;
+
+      * {
+        font-size: 2em;
+      }
     }
-    
+
     .empty-row {
-        height: 2em;
-        display: block;
+      height: 2em;
+      display: block;
     }
   }
 
@@ -58,12 +58,55 @@
     color: @background-color;
 
     &:hover {
-        cursor: wait;
-        background-color: @secondary-color;
+      cursor: wait;
+      background-color: @secondary-color;
     }
 
     &.spin-btn {
-        padding: 0.5em;
+      padding: 0.5em;
+    }
+  }
+
+  .social-list {
+    display: flex;
+    margin: 0 auto;
+    border: 2px dashed @foreground-color;
+    max-width: 20em;
+    padding: 2em;
+    border-radius: 2em;
+    overflow: hidden;
+
+    @keyframes scroll {
+      to {
+        transform: translate(calc(-50% - 1em));
+      }
+    }
+
+    .scroller {
+      display: flex;
+      justify-content: center;
+      width: max-content;
+      flex-wrap: nowrap;
+      gap: 2em;
+      animation: scroll 10s forwards linear infinite;
+
+      .element {
+        height: 5em;
+        aspect-ratio: 1;
+
+        @keyframes rotate {
+          from {
+            transform: rotateY(0deg);
+          }
+          to {
+            transform: rotateY(360deg);
+          }
+        }
+
+        &.random:hover {
+          animation: rotate 2s linear infinite;
+        }
+      }
     }
   }
 }
