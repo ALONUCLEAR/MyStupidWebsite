@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { randomElement } from 'src/app/utils/general-utils';
 
 const sleep = (msToWait: number) =>
   new Promise((res) => setTimeout(res, msToWait));
@@ -31,10 +32,8 @@ const routesForShuffle: Route[] = [
 ];
 
 const shuffleRoute = (): Icon => {
-  const index = Math.floor(Math.random() * routesForShuffle.length - 0.01);
-  
   return {
-    ...routesForShuffle[index],
+    ...randomElement(routesForShuffle),
     fileType: 'svg',
     src: 'assets/dice-random.svg',
     classes: 'random'
