@@ -24,6 +24,7 @@ interface Icon extends Route {
 
 const routesForShuffle: Route[] = [
   { isInApp: true, url: 'asdasd' }, //for the not found
+  { isInApp: true, url: 'shuffle' },
   { url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
   { url: 'https://g.co/kgs/mxQksQ' },
   { url: "https://vuejsxo.netlify.app/" },

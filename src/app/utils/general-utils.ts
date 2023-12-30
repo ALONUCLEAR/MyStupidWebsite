@@ -8,3 +8,10 @@ export const random = (min: number = 0, max: number = 1) => Math.floor(Math.rand
 export const randomElement = <T = any>(array: T[]): T => {
     return array[random(0, array.length)];
 }
+
+/**A function to use setInterval without the initial delay */
+export const executeInterval = (func: () => void, msToWait: number) => {
+    func();
+
+    return setInterval(func, msToWait);
+}

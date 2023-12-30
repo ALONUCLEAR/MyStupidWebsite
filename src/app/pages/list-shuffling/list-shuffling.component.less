@@ -1,0 +1,46 @@
+@import "../../../styles.less";
+
+@btn-radius: 0.7em;
+@border-color: black;
+@focused-border-color: #5916cc;
+
+:host {
+  button,
+  input {
+    border-radius: @btn-radius;
+    border: 0.2em solid @border-color;
+    box-shadow: 0.1em 0.1em 0.1em black;
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: @secondary-color; // TODO: change green and blue to more specific colors(variables)
+      }
+    }
+
+    &:focus {   
+      border-color: @focused-border-color;
+      box-shadow: unset;
+      outline: unset; // prevent the default white outline around the focused input
+    }
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  & > * {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-container {
+    *:not(:nth-child(1)) {
+      margin-left: 0.5em;
+    }
+  }
+  .list-container {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+}
