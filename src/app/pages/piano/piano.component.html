@@ -1,0 +1,10 @@
+<div class="settings">
+    <mat-slide-toggle [(ngModel)]="useSharps" (ngModelChange)="renameKeys()"> Using {{useSharps ? 'Sharps' : 'Flats'}}</mat-slide-toggle>
+</div>
+<div class="piano">
+    <div *ngFor="let key of keys; let index = index;"
+        class="note" [class.black]="key.length > 1"
+        (click)="playNote(index)">
+        {{ key }}
+    </div>
+</div>
