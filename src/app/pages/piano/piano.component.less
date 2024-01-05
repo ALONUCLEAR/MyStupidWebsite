@@ -1,0 +1,90 @@
+@white-note-width: 8vw;
+@number-of-whites: 8;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .settings {
+    display: flex;
+    justify-content: start;
+    width: @white-note-width * @number-of-whites;
+    margin-bottom: 1vh;
+
+    mat-slide-toggle ::ng-deep {
+      .mdc-label {
+        font-size: large;
+      }
+
+      .mdc-switch {
+        width: fit-content;
+        height: fit-content;
+
+        .mdc-switch__track {
+          height: 3.5vw !important;
+          width: 7vw !important;
+          border-radius: 2vw !important;
+        }
+
+        .mdc-switch__handle-track {
+          .mdc-switch__icons {
+            display: none;
+          }
+        }
+
+        @handle-offset: 1vw;
+        &.mdc-switch--selected .mdc-switch__handle-track {
+          margin-left: -1 * @handle-offset;
+        }
+        &.mdc-switch--unselected .mdc-switch__handle-track {
+          margin-left: @handle-offset;
+        }   
+      }
+    }
+  }
+
+  .piano {
+    display: flex;
+    justify-content: center;
+    border: 0.5vw solid black;
+    background-color: #eee;
+    width: fit-content;
+
+    .note {
+      background-color: #eee;
+      color: black;
+      width: @white-note-width;
+      height: @white-note-width * 2.5;
+
+      &.black {
+        background-color: black;
+        color: #eee;
+        width: @white-note-width * 0.5;
+        height: @white-note-width * 1.5;
+        margin: 0 @white-note-width * -0.25;
+        z-index: 3;
+      }
+
+      border: 0.1vw solid black;
+      user-select: none;
+      font-size: @white-note-width * 0.4;
+      padding-bottom: 1vw;
+      
+      // center the text at the bottom
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      text-align: center;
+
+      // make it visually apparent when a button is pressed
+      &:active {
+        box-shadow: none;
+        background-color: rgba(163, 163, 163, 0.959);
+      }
+
+      box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw black;
+      cursor: pointer;
+    }
+  }
+}
