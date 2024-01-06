@@ -2,6 +2,7 @@
     <input #listInput placeholder="New list element" [(ngModel)]="inputValue" (keyup.enter)="submitInput()" type="text">
     <button mat-raised-button color="secondary" (click)="submitInput()">Add</button>
     <button mat-raised-button color="secondary" [disabled]="isShuffling" (click)="shuffleList()">Shuffle</button>
+    <button mat-raised-button color="secondary" [disabled]="isShuffling || list.length < 1" (click)="resetList()">Reset</button>
 </div>
 <div cdkDropList #listContainer class="list-container" (cdkDropListDropped)="drop($event)">
     <div *ngFor="let element of list; let index = index;" class="list-element" cdkDrag>
