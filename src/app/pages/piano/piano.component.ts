@@ -52,11 +52,13 @@ export class PianoComponent {
   useSharps: boolean = true;
   showLetters: boolean = true;
   selectedNoteSystem: NoteSystem = NoteSystem.ENGLISH;
+  selectedType: OscillatorType = 'sine';
   keys: Key[] = this.getKeysList(this.useSharps);
   /**  frequencies - indexed from C4 to C5, the difference between arr[i] and arr[i+1] always being a semi-tone.
   The middle octave starts a c4*/
   frequencies: number[] = [261.6, 277.2, 293.7, 311.1, 329.6, 349.2, 370.0, 392.0, 415.3, 440.0, 466.2, 493.9, 523.3];
   possibleNoteSystems: NoteSystem[] = Object.values(NoteSystem);
+  possibleOscillatorType: OscillatorType[] = ['sawtooth', 'sine', 'square', 'triangle'];
   playingSounds = new Map<number, AudioParam>();
 
   private getKeysList(useSharps: boolean): EnglishKey[] {
@@ -74,15 +76,13 @@ export class PianoComponent {
     return englishFlats.find((flat) => flat[0] === nextNatural[0])!;
   }
 
+  // use english keys and indecies so we don't have to find a note based on it's flat/sharp form
   playNote(noteIndex: number): void {
-    // use english keys and indecies so we don't have to find a note based on it's flat/sharp form
-    const TYPE: OscillatorType = 'sine';
-
     // prevent a note from continuing to play endlessly 
     this.playingSounds.get(noteIndex)?.exponentialRampToValueAtTime(0.00001, 1);
     this.playingSounds.set(
       noteIndex,
-      playNoteFromFrequency(this.frequencies[noteIndex], TYPE, context)
+      playNoteFromFrequency(this.frequencies[noteIndex], this.selectedType, context)
     );
   }
 
