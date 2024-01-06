@@ -31,6 +31,7 @@ export class TouchClickDirective implements OnInit {
   }
 
   onTouchStart(e: TouchEvent) {
+    e.preventDefault();
     // hold the touch start position
     this.start = e.touches[0];
 
@@ -44,6 +45,7 @@ export class TouchClickDirective implements OnInit {
   }
 
   onTouchEnd(e: TouchEvent) {
+    e.preventDefault();
     // if the timeout was called, there will be no start position
     if (!this.start) {
       return;
