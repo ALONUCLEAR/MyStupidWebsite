@@ -17,6 +17,12 @@ export class ListShufflingComponent {
   inputValue: string = '';
   isShuffling: boolean = false;
 
+  resetList(): void {
+    this.list = [];
+    this.inputValue = '';
+    this.listInputElement?.nativeElement?.focus();
+  }
+
   submitInput(): void {
     this.addToList(this.inputValue);
     this.inputValue = '';
