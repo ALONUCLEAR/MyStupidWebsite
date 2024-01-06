@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 const englishKeys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'] as const;
-const englishFlats = ['Db', 'Eb', 'Gb', 'Ab', 'Bb'] as const;
+const englishFlats = ['D♭', 'E♭', 'G♭', 'A♭', 'B♭'] as const;
 
 const solfageKeys = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'La#', 'Si'] as const;
 const solfageFlats = ['Re♭', 'Mi♭', 'Sol♭', 'La♭', 'Si♭'] as const;
