@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 const englishKeys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'] as const;
 const englishFlats = ['D♭', 'E♭', 'G♭', 'A♭', 'B♭'] as const;
@@ -88,6 +88,12 @@ export class PianoComponent {
       this.playingSounds.delete(noteIndex);
   }
 
+  @HostListener('document:mouseup')
+  stopAllNotes(): void {
+    [...this.playingSounds.keys()]
+      .forEach(index=> this.stopNote(index));
+  }
+  
   getSystemKeys(system: NoteSystem): Key[] {
     const englishKeyList = this.getKeysList(this.useSharps);
     switch (system) {

@@ -11,7 +11,7 @@
     <div *ngFor="let key of keys; let index = index;"
         class="note" [class.black]="key.endsWith('#') || key.endsWith('♭')"
         (mousedown)="playNote(index)" (mouseup)="stopNote(index)"
-        (touchstart)="playNote(index)" (touchend)="stopNote(index)">
+        touchClick (touchStart)="playNote(index)" (touchEnd)="stopNote(index)">
         {{ key }}
     </div>
 </div>

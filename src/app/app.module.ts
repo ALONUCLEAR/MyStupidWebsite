@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListShufflingComponent } from './pages/list-shuffling/list-shuffling.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PianoComponent } from './pages/piano/piano.component';
+import { TouchClickDirective } from './directives/touch-click.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PianoComponent } from './pages/piano/piano.component';
     NotFoundComponent,
     ListShufflingComponent,
     PianoComponent,
+    TouchClickDirective,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { PianoComponent } from './pages/piano/piano.component';
     MatSelectModule
   ],
   providers: [],
+  exports: [TouchClickDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
