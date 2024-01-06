@@ -53,7 +53,9 @@ export class HomeComponent implements AfterViewInit {
   /**Hehe socialist */
   socialList: Icon[] = [
     { src: 'assets/github.svg', fileType: 'svg', url: "https://github.com/ALONUCLEAR", },
+    { src: 'assets/list.svg', fileType: 'svg', url: 'shuffle', isInApp: true, },
     { ...shuffleRoute() },
+    { src: 'assets/piano.svg', fileType: 'svg', url: 'piano', isInApp: true, },
     { src: 'assets/itch-io.svg', fileType: 'svg', url: "https://alonuclear.itch.io/", },
   ]
 
