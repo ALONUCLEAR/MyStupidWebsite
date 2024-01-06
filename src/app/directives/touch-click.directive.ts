@@ -32,6 +32,7 @@ export class TouchClickDirective implements OnInit {
 
   onTouchStart(e: TouchEvent) {
     e.preventDefault();
+    (this.elementRef?.nativeElement as HTMLElement)?.classList.add('active');
     // hold the touch start position
     this.start = e.touches[0];
 
@@ -46,6 +47,7 @@ export class TouchClickDirective implements OnInit {
 
   onTouchEnd(e: TouchEvent) {
     e.preventDefault();
+    (this.elementRef?.nativeElement as HTMLElement)?.classList.remove('active');
     // if the timeout was called, there will be no start position
     if (!this.start) {
       return;
