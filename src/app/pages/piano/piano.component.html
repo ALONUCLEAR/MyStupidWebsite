@@ -1,5 +1,8 @@
 <div class="settings">
     <mat-slide-toggle [(ngModel)]="showLetters"> {{showLetters ? 'Showing' : 'Hiding'}} key names</mat-slide-toggle>
+    <mat-select [(ngModel)]="selectedType" style="width: 10rem">
+        <mat-option *ngFor="let type of possibleOscillatorType" [value]="type">{{ type }}</mat-option>
+    </mat-select>
     <span *ngIf="showLetters" class="label-settings">
         <mat-slide-toggle [(ngModel)]="useSharps" (ngModelChange)="swapKeys()"> Using {{useSharps ? 'Sharps' : 'Flats'}}</mat-slide-toggle>
         <span class="system-pick">
