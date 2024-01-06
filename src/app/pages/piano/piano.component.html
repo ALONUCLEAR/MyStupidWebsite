@@ -1,10 +1,13 @@
 <div class="settings">
-    <mat-slide-toggle [(ngModel)]="useSharps" (ngModelChange)="swapKeys()"> Using {{useSharps ? 'Sharps' : 'Flats'}}</mat-slide-toggle>
-    <span class="system-pick">
-        <mat-label>Note System:</mat-label>
-        <mat-select [(ngModel)]="selectedNoteSystem" (ngModelChange)="swapKeys()">
-            <mat-option *ngFor="let system of possibleNoteSystems" [value]="system">{{ system }}</mat-option>
-        </mat-select>
+    <mat-slide-toggle [(ngModel)]="showLetters"> {{showLetters ? 'Showing' : 'Hiding'}} key names</mat-slide-toggle>
+    <span *ngIf="showLetters" class="label-settings">
+        <mat-slide-toggle [(ngModel)]="useSharps" (ngModelChange)="swapKeys()"> Using {{useSharps ? 'Sharps' : 'Flats'}}</mat-slide-toggle>
+        <span class="system-pick">
+            <mat-label>Note System:</mat-label>
+            <mat-select [(ngModel)]="selectedNoteSystem" (ngModelChange)="swapKeys()">
+                <mat-option *ngFor="let system of possibleNoteSystems" [value]="system">{{ system }}</mat-option>
+            </mat-select>
+        </span>
     </span>
 </div>
 <div class="piano">
@@ -12,6 +15,6 @@
         class="note" [class.black]="key.endsWith('#') || key.endsWith('♭')"
         (mousedown)="playNote(index)" (mouseup)="stopNote(index)"
         touchClick (touchStart)="playNote(index)" (touchEnd)="stopNote(index)">
-        {{ key }}
+        {{ showLetters ? key : '' }}
     </div>
 </div>

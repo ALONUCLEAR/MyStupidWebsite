@@ -11,8 +11,14 @@
   .settings {
     display: flex;
     justify-content: start;
-    width: @white-note-width * @number-of-whites;
+    min-width: @white-note-width * @number-of-whites;
     margin-bottom: 1vh;
+
+    .label-settings {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
 
     mat-slide-toggle ::ng-deep {
       display: flex;
@@ -101,7 +107,7 @@
       text-align: center;
 
       // make it visually apparent when a button is pressed
-      &:active {
+      &:active, &.active {
         box-shadow: none;
         background-color: rgba(163, 163, 163, 0.959);
       }

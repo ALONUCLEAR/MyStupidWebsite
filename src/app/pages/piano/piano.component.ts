@@ -27,9 +27,11 @@ export enum NoteSystem {
   SOLFAGE = 'Solfage',
 }
 
+// set audio context as a const outside of the function, since chrome allows for up to 6 contexes
+const context = new AudioContext();
+
 /**A function that accepts a frequency and an Oscillator type and plays a sound accordingly */
-export const playNoteFromFrequency = (frequency: number, type: OscillatorType): AudioParam => {
-  const context = new AudioContext();
+export const playNoteFromFrequency = (frequency: number, type: OscillatorType, context: AudioContext): AudioParam => {
   const oscillator = context.createOscillator();
   const gainNode = context.createGain();
   oscillator.type = type;
@@ -48,6 +50,7 @@ export const playNoteFromFrequency = (frequency: number, type: OscillatorType): 
 })
 export class PianoComponent {
   useSharps: boolean = true;
+  showLetters: boolean = true;
   selectedNoteSystem: NoteSystem = NoteSystem.ENGLISH;
   keys: Key[] = this.getKeysList(this.useSharps);
   /**  frequencies - indexed from C4 to C5, the difference between arr[i] and arr[i+1] always being a semi-tone.
@@ -79,7 +82,7 @@ export class PianoComponent {
     this.playingSounds.get(noteIndex)?.exponentialRampToValueAtTime(0.00001, 1);
     this.playingSounds.set(
       noteIndex,
-      playNoteFromFrequency(this.frequencies[noteIndex], TYPE)
+      playNoteFromFrequency(this.frequencies[noteIndex], TYPE, context)
     );
   }
 
@@ -89,6 +92,7 @@ export class PianoComponent {
   }
 
   @HostListener('document:mouseup')
+  @HostListener('document:touchend')
   stopAllNotes(): void {
     [...this.playingSounds.keys()]
       .forEach(index=> this.stopNote(index));
